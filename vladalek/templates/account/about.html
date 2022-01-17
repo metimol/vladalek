@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/account/about.css' %}">
+<script src="{% static 'js/account/about.js' %}"></script>
+{% endblock %}
+
+{% block title %}{{user.username}}{% endblock %}
+
+{% block content %}
+
+<div class="card">
+	<div class="title">
+		<div class="image">
+			{% if user.avatar %}
+			<img src="/static/media/avatar/{{user.avatar}}" alt={{user.username}}>
+			{% else %}
+			<i class="fas fa-user-circle" id="no_avatar"></i>
+			{% endif %}
+			<i class="fas fa-pen-square" id="edit"></i>
+		</div>
+		<b>{{user.username}}</b>
+	</div>
+	<div class="edit_avatar">
+		Выберите аватар:
+		<form method="POST" action=".">
+			{% csrf_token %}
+			<div class="images">
+				{% if user.is_superuser %}
+				{% for i in '012345678'|make_list %}
+					<input name="avatar" type="radio" id="{{i}}.png" value="{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="/static/media/avatar/{{i}}.png"></label>
+				{% endfor %}
+				{% else %}
+				{% for i in '12345678'|make_list %}
+					<input name="avatar" type="radio" id="{{i}}.png" value="{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="/static/media/avatar/{{i}}.png"></label>
+				{% endfor %}
+				{% endif %}
+			</div>
+			<div class="next">
+				<input type="submit" value="ОК"  />
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

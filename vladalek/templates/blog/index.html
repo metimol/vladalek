@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load pagination_tags %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/blog/index.css' %}">
+<script src="{% static 'js/blog/index.js' %}"></script>
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="open_border">
+	<div class="open">
+		<span class='category'>
+			{% if category %}
+			{{ category }}
+			{% else %}
+			Категории
+			{% endif %}
+		</span>
+		<ion-icon name="chevron-down-outline" id="ion"></ion-icon>
+	</div>
+	<div class="categories">
+	{% if category %}
+	<a href="{% url 'blog:index' %}">Все статьи</a>
+	{% endif %}
+	{% for a in categories_list %}
+	<a href="?category={{a.category}}">{{a.category}}</a>
+	{% endfor %}
+	</div>
+</div>
+
+{% for a in articles_list %}
+<div class="card" onclick="window.location='{% url "blog:detail" a.id %}';">
+	<div class="author">
+		<img src="/static/media/avatar/{{a.article_author.avatar}}" alt={{a.article_author.username}}>
+		{{ a.article_author.username }}
+	</div>
+	<div class="title">
+		{{ a.article_title }}
+	</div>
+	<div class='about'>
+		{{ a.article_about }}
+	</div>
+	<div class="information">
+		<span id="pub_date">{{a.pub_date}}</span>
+		<ion-icon name="chatbox-ellipses-outline"></ion-icon><span id="coments">{{ a.coments.all|length }}</span>
+	</div>
+</div>
+{% endfor %}
+
+<div class="pages">
+	{% if paginator.num_pages > 7 %}
+	{% if page_list.0 != 1 %}
+	<a href="?{% url_replace request 'page' 1 %}" id="page">1</a>
+	<span>...</span>
+	{% endif %}
+	{% for a in page_list %}
+	<a href="?{% url_replace request 'page' a %}" id="page">{{a}}</a>
+	{% endfor %}
+	{% if page_list|last != paginator.num_pages|add:"-1" %}
+	<span>...</span>
+	{% endif %}
+	<a href="?{% url_replace request 'page' paginator.num_pages %}" id="page">{{ paginator.num_pages }}</a>
+	{% else %}
+	{% for a in page_list %}
+	<a href="?{% url_replace request 'page' a %}" id="page">{{a}}</a>
+	{% endfor %}
+	{% endif %}
+</div>
+
+{% if user.is_authenticated %}
+<div class="add" onclick="window.location='{% url "blog:create_article" %}';">
+	<i class="fas fa-plus"></i>
+</div>
+{% endif %}
+
+{% endblock %}

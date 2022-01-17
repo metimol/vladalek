@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Коментарии{% endblock %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/blog/detail.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<ion-icon name="chevron-back-outline" class="back" onclick="window.location='{% url "blog:detail" a.id %}';"></ion-icon>
+<div class="coment_list">
+	{% for i in coments_list %}
+	{% if i.coment_author.username == user.get_username %}
+	<div class="you_coment">
+		<div class="author">
+			<p>{{ i.coment_author.username }}</p>
+		</div>
+		<div class="coment_text">
+			<p>{{ i.coment_text }}</p>
+		</div>
+		<div class="coment_date">
+			{{ i.pub_date }}
+		</div>
+	</div>
+	{% else %}
+	<div class="coment">
+		<div class="author">
+			<p>{{ i.coment_author.username }}</p>
+		</div>
+		<div class="coment_text">
+			<p>{{ i.coment_text }}</p>
+		</div>
+		<div class="coment_date">
+			{{ i.pub_date }}
+		</div>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+
+{% endblock %}

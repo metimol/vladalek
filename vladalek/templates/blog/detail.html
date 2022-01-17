@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/blog/detail.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{{a.article_title}}{% endblock %}
+
+{% block content %}
+	
+	<div class="card">
+		<i></i>
+		<div class="title">
+			<p>{{a.article_title}}</p>
+		</div>
+		<div class="content">
+			<div class="text">
+				{{a.article_text | safe}}
+			</div>
+			<div class="date">
+				{{a.pub_date}}
+			</div>
+		</div>
+		<div class="coments">
+			<div class="title">Коментарии:</div>
+			{% if user.is_authenticated %}
+			<div class="add_coment">
+				<form action="{% url  'blog:detail' a.id %}" method="POST">
+					{% csrf_token %}
+					<div class="block">
+						<input name="text" id="text" type="text" class="form-control" required autocomplete="off">
+						<label>Ваш комментарий</label>
+					</div>
+					<div class="next">
+						<input type="submit" value="Отправить" id="send" />
+					</div>
+				</form>
+			</div>
+			{% else %}
+			<div class="non_auth">
+				<a href="{% url 'account:login' %}"><span>Войдите</span></a>, чтобы оставить коментарий.
+			</div>
+			{% endif %}
+			{% for i in coments_list %}
+			{% if i.coment_author.username == user.get_username %}
+			<div class="you_coment">
+				<div class="author">
+					<p>{{ i.coment_author.username }}</p>
+				</div>
+				<div class="coment_text">
+					<p>{{ i.coment_text }}</p>
+				</div>
+				<div class="coment_date">
+					{{ i.pub_date }}
+				</div>
+			</div>
+			{% else %}
+			<div class="coment">
+				<div class="author">
+					<p>{{ i.coment_author.username }}</p>
+				</div>
+				<div class="coment_text">
+					<p>{{ i.coment_text }}</p>
+				</div>
+				<div class="coment_date">
+					{{ i.pub_date }}
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% if coments_list|length > 7 %}
+			<div class="detail_coments">
+				<a href="{% url 'blog:coments_list' a.id %}"><span>Читать все комментарии</span></a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

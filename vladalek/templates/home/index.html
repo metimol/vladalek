@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/home/index.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="message">
+	{% if admin %}
+	<img src="/static/media/avatar/{{admin.avatar}}" alt="Админ">
+	{% else %}
+	<i class="fas fa-user-circle" id="no_avatar"></i>
+	{% endif %}
+	<div class="my_message">
+		<p>Приветствую, {{user.get_username}}!</p>
+		<p id="author">Admin</p>
+	</div>
+</div>
+{% else %}
+<div class="hello">
+	<div class="text">
+		Чтобы получить полный доступ к сайту
+		<a href="{% url 'account:login' %}" style="--i:0;"><span>Войдите</span></a>
+		Или
+		<a href="{% url 'account:register' %}" style="--i:1;"><span>Зарегистрируйтесь</span></a>
+	</div>
+</div>
+{% endif %}
+
+<div class="all_greetings">
+<div class="greetings" onclick="window.location='{% url "blog:index" %}';">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<div class="icon">
+		<ion-icon name="chatbox-outline"></ion-icon>
+	</div>
+	<div class="text">
+		<p>На сайте Вы можете прочитать подробнейшие руководства по программированию. Начиная от чат-ботов, заканчивая созданием огромных проектов.</p>
+	</div>
+</div>
+
+<div class="greetings" onclick="window.location='https://t.me/vladalek_channel';">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<div class="icon">
+		<i class="fab fa-telegram-plane"></i>
+	</div>
+	<div class="text">
+		<p>У меня есть свой канал Telegram, в котором я делюсь с Вами полезной информацией, спрашиваю Вас, какой создать следующий пост и т.д.</p>
+	</div>
+</div>
+
+<div class="greetings">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<div class="icon">
+		<i class="fas fa-mobile-alt"></i>
+	</div>
+	<div class="text">
+		<p>Весь сайт я создавал на телефоне. Отдельные уроки по этой теме находятся в блоге. В разделе "На телефоне"</p>
+	</div>
+</div>
+</div>
+
+<div class="information">
+	<div class="border_news">
+		<div class="news">
+			<p>Новости сайта:</p>
+			{% if news_list %}
+			{% for a in news_list %}
+			<div class="border_new" >
+				<div class="new">
+					<div class="news_title">
+						{{ a.new_title }}
+					</div>
+					<div class="news_text">
+						{{ a.new_text }}
+					</div>
+					<div class="news_date">
+						{{ a.pub_date }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="no_news">
+				Пока новостей нет &#129300;
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	<div class="border_articles">
+		<div class="articles">
+			<p>Последние статьи:</p>
+			{% if articles_list %}
+			{% for a in articles_list %}
+			<div class="border_article" onclick="window.location='{% url "blog:detail" a.id %}';">
+				<div class="article">
+					<div class="article_title">
+						{{ a.article_title }}
+					</div>
+					<div class="article_about">
+						{{ a.article_about }}
+					</div>
+					<div class="article_date">
+						{{ a.pub_date }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="no_articles">
+				Пока на сайте статей нет &#129301;
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

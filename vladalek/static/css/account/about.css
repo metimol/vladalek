@@ -1,0 +1,92 @@
+.card {
+	width: 90%;
+	height: auto;
+	margin: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	box-sizing: border-box;
+	border-radius: 18px;
+	text-align: center;
+	padding: 1rem;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.image {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	width: 8rem;
+	height: 8rem;
+}
+.image img {
+	width: 8rem;
+	height: 8rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.image i#no_avatar {
+	font-size: 8rem;
+}
+.image i#edit {
+	display: block;
+	position: absolute;
+	font-size: 1.5rem;
+	bottom: 0;
+	right: 0;
+}
+.title b {
+	font-family: 'Pacifico', cursive;
+	font-size: 4rem;
+	margin-bottom: 30px;
+}
+.edit_avatar {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 3.375rem;;
+	left: 0;
+	background: #383838;
+	font-size: 2rem;
+	color: white;
+}
+.images {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.images input[type=radio] {
+	display: none;
+}
+.images img {
+	width: 4rem;
+	height: 4rem;
+	margin-left: 0.5rem;
+}
+.avatar_radio:checked + label img{
+	width: 3rem;
+	height: 3rem;
+	border: 5px solid #af43f1;
+	border-radius: 100px;
+}
+.next input {
+	display: block;
+	font-family: 'Pacifico', cursive;
+	width: 60%;
+	height: 40px;
+	border-radius: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	font-size: 15px;
+	background: #af43f1;
+	color: white;
+	transition: 0.6s;
+	outline: none;
+}
+.next input:hover {
+	box-shadow: 0 0 10px #af43f1,
+	0 0 30px #af43f1;
+}

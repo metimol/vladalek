@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/account/login.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+<div class="login">
+	<b>Вход</b>
+	{% if messages %}
+	<div class="error">
+		{% for message in messages %}
+		<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<div class="card">
+		<form method="POST" action=".">
+			{% csrf_token %}
+			<div class="user">
+				<input name="username" id="username" type="text" class="form-control" required autocomplete="off">
+				<label>Логин или электронная почта</label>
+			</div>
+			<div class="user">
+				<input name="password" id="password" type="password" class="form-control" required>
+				<label>Пароль</label>
+			</div>
+			<div class="next">
+				<input type="submit" id="next" value="Вход"  />
+			</div>
+		</form>
+		<div class="reset">
+			<a href="{% url 'account:reset' %}">Забыли пароль?</a>
+		</div>
+		<div class="register">
+			Нет аккаунта? <a href="{% url 'account:register' %}"><span>Регистрация</span></a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

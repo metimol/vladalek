@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/blog/create_article.css' %}">
+<script src="{% static 'js/blog/create_article.js' %}"></script>
+{{ CreateArticleForm.media }}
+{% endblock %}
+
+{% block title %}Создать статью{% endblock %}
+
+{% block content %}
+
+<div class="create">
+	<b>Создать статью</b>
+	{% if messages %}
+	<div class="error">
+		{% for message in messages %}
+		<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<div class="card">
+		<form method="POST" action="{% url 'blog:create_article' %}">
+			{% csrf_token %}
+			<div class="categorie">
+				<label id="name_category">Категория</label>
+				<i class="fas fa-caret-right"></i>
+			</div>
+			<div class="categories">
+				{% for i in categories_list %}
+				<input name="categories" type="radio" id={{i.category}} value={{i.category}}><label for={{i.category}} class="category_radio">{{i.category}}</label>
+				{% endfor %}
+			</div>
+			<div class="part">
+				<input name="article_title" id="article_title" type="text" class="form-control" required autocomplete="off">
+				<label>Название статьи</label>
+			</div>
+			<div class="part">
+				<input name="article_about" id="article_about" type="text" class="form-control" required autocomplete="off">
+				<label>Описание статьи</label>
+			</div>
+			<div class="text">
+				<label>Текст статьи:</label>
+				{{CreateArticleForm.article_text}}
+			</div>
+			<div class="next">
+				<input type="submit" id="next" value="Создать"  />
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
