@@ -11,6 +11,13 @@
 {% block content %}
 
 <div class="card">
+	{% if messages %}
+	<div class="error">
+		{% for message in messages %}
+		<p>{{ message }}</p>
+		{% endfor %}
+	</div>
+	{% endif %}
 	<div class="title">
 		<div class="image">
 			{% if user.avatar %}
@@ -21,7 +28,18 @@
 			<i class="fas fa-pen-square" id="edit"></i>
 		</div>
 		<b>{{user.username}}</b>
+		<form method="POST" action=".">
+			{% csrf_token %}
+			<div class="social">
+				<input name="github" id="github" type="text" class="form-control" required autocomplete="off">
+				<label>Логин в GitHub</label>
+			</div>
+			<div class="next">
+				<input type="submit" name="social_networks" value="ОК"  />
+			</div>
+		</form>
 	</div>
+	
 	<div class="edit_avatar">
 		Выберите аватар:
 		<form method="POST" action=".">
@@ -38,7 +56,7 @@
 				{% endif %}
 			</div>
 			<div class="next">
-				<input type="submit" value="ОК"  />
+				<input type="submit" name="change_photo" value="ОК"  />
 			</div>
 		</form>
 	</div>

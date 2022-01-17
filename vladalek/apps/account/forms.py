@@ -31,3 +31,6 @@ class ResetConfirmForm(forms.Form):
 
 class AvatarForm(forms.Form):
 	avatar = forms.CharField()
+	
+class SocialNetworksForm(forms.Form):
+	github = forms.CharField()

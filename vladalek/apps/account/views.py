@@ -7,10 +7,11 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.hashers import make_password, check_password
 from .models import Profile
-from .forms import LoginForm, RegisterForm, ResetForm, ResetConfirmForm, AvatarForm
+from .forms import LoginForm, RegisterForm, ResetForm, ResetConfirmForm, AvatarForm, SocialNetworksForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+import requests
 
 def user_login(request):
 	if request.method == 'POST':
@@ -113,7 +114,7 @@ def password_reset(request):
 				code = generate_code()
 				user.code = make_password(code)
 				user.save()
-				url = 'http://127.0.0.1:8000/account/'+user.username+'/'+code+"/reset"
+				url = f'http://127.0.0.1:8000/account/{user.username}/{code}/reset'
 				msg_html = render_to_string('account/email.html', {'username': user.username, 'text': text, 'url': url})
 				send_mail('Сброс пароля', text, 'Metimol', [user.email], html_message=msg_html,)
 				return render(request, "account/url.html")
@@ -150,13 +151,25 @@ def reset_confirm(request, username, code):
 def user_about(request):
 	if request.user.is_authenticated:
 		user = Profile.objects.get(username = request.user.username)
-		if request.method=="POST":
+		if request.method=="POST" and "change_photo" in request.POST:
 			form = AvatarForm(request.POST)
 			if form.is_valid():
 				cd = form.cleaned_data
 				avatar = cd['avatar']
 				user.avatar = avatar
 				user.save()
+		elif request.method=="POST" and "social_networks" in request.POST:
+			form = SocialNetworksForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				github = cd['github'].lower()
+				url_github = f"https://github.com/{github}"
+				r = requests.head(url_github, allow_redirects=True)
+				if r.status_code == 200:
+					user.github = url_github
+					user.save()
+				else:
+					messages.error(request, 'Такого пользователя GitHub несуществует')
 		context = {'user': user}
 	else:
 		return HttpResponseRedirect(reverse('account:login'))
