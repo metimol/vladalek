@@ -52,11 +52,11 @@ header .avatar {
 	color: white;
 	outline: none;
 	padding: 0;
-	cursor: pointer;
 }
 header .avatar img {
 	width: 1.85rem;
 	height: 1.85rem;
+	cursor: pointer;
 }
 .sidenav {
   height: 100%;

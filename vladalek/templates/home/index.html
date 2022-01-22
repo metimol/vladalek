@@ -13,7 +13,7 @@
 {% if user.is_authenticated %}
 <div class="message">
 	{% if admin %}
-	<img src="/static/media/avatar/{{admin.avatar}}" alt="Админ">
+	<img src={{admin.avatar}} alt="Админ">
 	{% else %}
 	<i class="fas fa-user-circle" id="no_avatar"></i>
 	{% endif %}

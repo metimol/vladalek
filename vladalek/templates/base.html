@@ -46,7 +46,7 @@
 			</div>
 			<div class="avatar" onclick="window.location='{% url "account:about" %}';">
 				{% if user.avatar %}
-				<img src="/static/media/avatar/{{user.avatar}}">
+				<img src={{user.avatar}}>
 				{% else %}
 				<i class="fas fa-user-circle" id="no_avatar"></i>
 				{% endif %}
