@@ -35,7 +35,7 @@
 {% for a in articles_list %}
 <div class="card" onclick="window.location='{% url "blog:detail" a.id %}';">
 	<div class="author">
-		<img src="/static/media/avatar/{{a.article_author.avatar}}" alt={{a.article_author.username}}>
+		<img src={{a.article_author.avatar}} alt={{a.article_author.username}}>
 		{{ a.article_author.username }}
 	</div>
 	<div class="title">
