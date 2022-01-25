@@ -1,13 +1,6 @@
-.error {
-	width: 100%;
-	margin-top: 0.5rem;
-	text-align: center;
-	color: red;
-	font-size: 1rem;
-}
 .card {
 	position: relative;
-	width: 90%;
+	width: 95%;
 	min-height: 21rem;
 	margin: 2rem;
 	margin-left: auto;
@@ -16,10 +9,38 @@
 	box-sizing: border-box;
 	border-radius: 18px;
 	text-align: center;
-	padding: 1rem;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-bottom: 1rem;
 	overflow: hidden;
+}
+.title .menu {
+	width: 100%;
+	font-size: 1rem;
+	background: linear-gradient(to top, #ecd2fc, #d69bfa);
+	display: flex;
+	text-align: center;
+	overflow: auto;
+}
+.title .menu::-webkit-scrollbar {
+	display: none;
+}
+.part_menu {
+	position: relative;
+}
+.menu a {
+	display: block;
+	position: relative;
+	text-decoration: none;
+	color: #008080;
+	padding: 0.7rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.part_menu .active {
+	position: absolute;
+	top: 0;
+	background: blue;
+	height: 0.3rem;
+	width: 100%;
 }
 .image {
 	margin-left: auto;

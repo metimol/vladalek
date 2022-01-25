@@ -11,14 +11,13 @@
 {% block content %}
 
 <div class="card">
-	{% if messages %}
-	<div class="error">
-		{% for message in messages %}
-		<p>{{ message }}</p>
-		{% endfor %}
-	</div>
-	{% endif %}
 	<div class="title">
+		<div class="menu">
+			<div class="part_menu">{% if "basic" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "basic" in request.GET %}href="?basic"{% endif %}>Главная</a></div>
+			<div class="part_menu">{% if "information" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "information" in request.GET %}href="?information"{% endif %}>Статьи</a></div>
+			<div class="part_menu">{% if "security" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "security" in request.GET %}href="?security"{% endif %}> Безопасность</a></div>
+		</div>
+		{% if "basic" in request.GET %}
 		<div class="image">
 			{% if user.avatar %}
 			<img src={{user.avatar}} alt={{user.username}}>
@@ -28,11 +27,14 @@
 			<i class="fas fa-pen-square" id="edit"></i>
 		</div>
 		<b>{{user.username}}</b>
+		{% elif "information" in request.GET %}
 		<div class="social_icons">
 			<i class="fab fa-github" id="github"></i>
 		</div>
+		{% endif %}
 	</div>
 	
+	{% if "basic" in request.GET %}
 	<div class="edit_avatar">
 		Выберите аватар:
 		<form method="POST" action=".">
@@ -54,6 +56,7 @@
 		</form>
 	</div>
 	
+	{% elif "information" in request.GET %}
 	<div class="github">
 		<form method="POST" action=".">
 			{% csrf_token %}
@@ -66,6 +69,7 @@
 			</div>
 		</form>
 	</div>
+	{% endif %}
 </div>
 
 {% endblock %}
