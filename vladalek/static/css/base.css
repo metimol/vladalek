@@ -58,6 +58,9 @@ header .avatar img {
 	height: 1.85rem;
 	cursor: pointer;
 }
+header .avatar i {
+	cursor: pointer;
+}
 .sidenav {
   height: 100%;
   float: left;
@@ -116,6 +119,7 @@ footer {
 }
 footer i {
 	margin-left: 0.8rem;
+	cursor: pointer;
 }
 footer p {
 	float: right;

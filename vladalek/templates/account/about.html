@@ -12,12 +12,6 @@
 
 <div class="card">
 	<div class="title">
-		<div class="menu">
-			<div class="part_menu">{% if "basic" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "basic" in request.GET %}href="?basic"{% endif %}>Главная</a></div>
-			<div class="part_menu">{% if "information" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "information" in request.GET %}href="?information"{% endif %}>Статьи</a></div>
-			<div class="part_menu">{% if "security" in request.GET %}<div class="active"></div>{% endif %}<a {% if not "security" in request.GET %}href="?security"{% endif %}> Безопасность</a></div>
-		</div>
-		{% if "basic" in request.GET %}
 		<div class="image">
 			{% if user.avatar %}
 			<img src={{user.avatar}} alt={{user.username}}>
@@ -26,15 +20,12 @@
 			{% endif %}
 			<i class="fas fa-pen-square" id="edit"></i>
 		</div>
-		<b>{{user.username}}</b>
-		{% elif "information" in request.GET %}
-		<div class="social_icons">
-			<i class="fab fa-github" id="github"></i>
+		<b id="username">{{user.username}}</b>
+		<div class="social_networks">
+			Мои социальные сети
 		</div>
-		{% endif %}
 	</div>
 	
-	{% if "basic" in request.GET %}
 	<div class="edit_avatar">
 		Выберите аватар:
 		<form method="POST" action=".">
@@ -56,20 +47,36 @@
 		</form>
 	</div>
 	
-	{% elif "information" in request.GET %}
-	<div class="github">
+	<div class="add_social">
+		Эти данные будут показаны в Ваших статьях
 		<form method="POST" action=".">
 			{% csrf_token %}
-			<div class="social">
-				<input name="github" id="github" type="text" class="form-control" required autocomplete="off">
-				<label>Логин в GitHub</label>
+			<div class="all_social">
+				<i class="fab fa-github"></i>
+				<div class="social">
+					<input name="github" id="github" type="text" class="form-control" required autocomplete="off">
+					<label>Логин в GitHub</label>
+				</div>
+			</div>
+			<div class="all_social">
+				<i class="fab fa-instagram"></i>
+				<div class="social">
+					<input name="instagram" id="instagram" type="text" class="form-control" required autocomplete="off">
+					<label>Логин в Instagram</label>
+				</div>
+			</div>
+			<div class="all_social">
+				<i class="fab fa-facebook"></i>
+				<div class="social">
+					<input name="facebook" id="facebook" type="text" class="form-control" required autocomplete="off">
+					<label>Логин в Facebook</label>
+				</div>
 			</div>
 			<div class="next">
 				<input type="submit" name="social_networks" value="ОК"  />
 			</div>
 		</form>
 	</div>
-	{% endif %}
 </div>
 
 {% endblock %}

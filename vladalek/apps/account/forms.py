@@ -33,4 +33,4 @@ class AvatarForm(forms.Form):
 	avatar = forms.CharField()
 	
 class SocialNetworksForm(forms.Form):
-	github = forms.CharField()
+	github = forms.CharField(required=False)
