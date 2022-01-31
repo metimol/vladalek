@@ -18,7 +18,7 @@ def index(request):
 	else:
 		articles_list = Articles.objects.order_by('-id')
 	if articles_list:
-		paginator = Paginator(articles_list, 1)
+		paginator = Paginator(articles_list, 2)
 		if not page_num:
 			page_num = 1
 		page = paginator.get_page(page_num)

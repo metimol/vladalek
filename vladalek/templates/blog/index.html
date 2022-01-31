@@ -34,10 +34,6 @@
 
 {% for a in articles_list %}
 <div class="card" onclick="window.location='{% url "blog:detail" a.id %}';">
-	<div class="author">
-		<img src={{a.article_author.avatar}} alt={{a.article_author.username}}>
-		{{ a.article_author.username }}
-	</div>
 	<div class="title">
 		{{ a.article_title }}
 	</div>
@@ -45,8 +41,11 @@
 		{{ a.article_about }}
 	</div>
 	<div class="information">
-		<span id="pub_date">{{a.pub_date}}</span>
-		<ion-icon name="chatbox-ellipses-outline"></ion-icon><span id="coments">{{ a.coments.all|length }}</span>
+		<div class="author">
+			<img src={{a.article_author.avatar}} alt={{a.article_author.username}}>
+			<b>{{ a.article_author.username }}</b>
+		</div>
+		<span>{{a.pub_date}}</span>
 	</div>
 </div>
 {% endfor %}
@@ -73,7 +72,7 @@
 
 {% if user.is_authenticated %}
 <div class="add" onclick="window.location='{% url "blog:create_article" %}';">
-	<i class="fas fa-plus"></i>
+	<ion-icon name="add-circle-outline"></ion-icon>
 </div>
 {% endif %}
 

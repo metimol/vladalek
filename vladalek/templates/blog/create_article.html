@@ -28,6 +28,7 @@
 				<i class="fas fa-caret-right"></i>
 			</div>
 			<div class="categories">
+				<b>Выберите категорию</b>:
 				{% for i in categories_list %}
 				<input name="categories" type="radio" id={{i.category}} value={{i.category}}><label for={{i.category}} class="category_radio">{{i.category}}</label>
 				{% endfor %}

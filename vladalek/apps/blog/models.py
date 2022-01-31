@@ -16,7 +16,7 @@ class Articles(models.Model):
 	article_title = models.CharField(max_length=20, help_text='Введите название статьи', verbose_name='Название статьи')
 	article_text = HTMLField(help_text='Текст статьи', verbose_name='Текст статьи')
 	article_about = models.TextField(help_text='О чём статья', verbose_name='Описание статьи', null=True)
-	pub_date = models.DateTimeField(auto_now_add=True)
+	pub_date = models.DateField(auto_now_add=True)
 	fixed = models.BooleanField(default=False, verbose_name="Закрепить")
 	def __str__(self):
 		return self.article_title

@@ -66,14 +66,14 @@
 	right: 0;
 }
 .title b#username {
-	font-family: 'Pacifico', cursive;
+	font-family: cursive;
 	font-size: 4rem;
 	margin-bottom: 30px;
 }
 .social_networks {
 	width: 70%;
 	height: 4rem;
-	font-family: 'Pacifico', cursive;
+	font-family: cursive;
 	font-size: 1.2rem;
 	margin-left: auto;
 	margin-right: auto;
