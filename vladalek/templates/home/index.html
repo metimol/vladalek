@@ -69,38 +69,12 @@
 		<i class="fas fa-mobile-alt"></i>
 	</div>
 	<div class="text">
-		<p>Весь сайт я создавал на телефоне. Отдельные уроки по этой теме находятся в блоге. В разделе "На телефоне"</p>
+		<p>Весь сайт я создавал на телефоне. Поэтому на сайте вы можете найти статьи по этой теме. </p>
 	</div>
 </div>
 </div>
 
 <div class="information">
-	<div class="border_news">
-		<div class="news">
-			<p>Новости сайта:</p>
-			{% if news_list %}
-			{% for a in news_list %}
-			<div class="border_new" >
-				<div class="new">
-					<div class="news_title">
-						{{ a.new_title }}
-					</div>
-					<div class="news_text">
-						{{ a.new_text }}
-					</div>
-					<div class="news_date">
-						{{ a.pub_date }}
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-			{% else %}
-			<div class="no_news">
-				Пока новостей нет &#129300;
-			</div>
-			{% endif %}
-		</div>
-	</div>
 	<div class="border_articles">
 		<div class="articles">
 			<p>Последние статьи:</p>
@@ -123,6 +97,32 @@
 			{% else %}
 			<div class="no_articles">
 				Пока на сайте статей нет &#129301;
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	<div class="border_news">
+		<div class="news">
+			<p>Закреплённые статьи:</p>
+			{% if fixed_list %}
+			{% for a in fixed_list %}
+			<div class="border_new" >
+				<div class="new">
+					<div class="news_title">
+						{{ a.article_title }}
+					</div>
+					<div class="news_text">
+						{{ a.article_about }}
+					</div>
+					<div class="news_date">
+						{{ a.pub_date }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="no_news">
+				Пока статей нет &#129300;
 			</div>
 			{% endif %}
 		</div>

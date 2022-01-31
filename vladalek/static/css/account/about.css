@@ -103,6 +103,17 @@
 	border: 5px solid #af43f1;
 	border-radius: 100px;
 }
+.get_socials {
+	width: 80%;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.5rem;
+	font-size: 1.7rem;
+}
+.add_social {
+	font-size: 1.3rem;
+}
 .all_social {
 	position: relative;
 	display: flex;
@@ -110,7 +121,7 @@
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 0.7rem;
+	margin-top: 0.28rem;
 }
 .all_social i {
 	display: block;

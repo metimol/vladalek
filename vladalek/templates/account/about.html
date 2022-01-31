@@ -21,9 +21,16 @@
 			<i class="fas fa-pen-square" id="edit"></i>
 		</div>
 		<b id="username">{{user.username}}</b>
+		{% if not user.facebook or not user.instagram or not user.github %}
 		<div class="social_networks">
-			Мои социальные сети
+			Добавить социальную сеть
 		</div>
+		{% endif %}
+		{% if user.github %}
+		<div class="get_socials">
+			<i class="fab fa-github">    {{ user.github|slice:"19:" }}</i>
+		</div>
+		{% endif %}
 	</div>
 	
 	<div class="edit_avatar">
