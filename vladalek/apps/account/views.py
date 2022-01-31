@@ -151,27 +151,25 @@ def reset_confirm(request, username, code):
 def user_about(request):
 	if request.user.is_authenticated:
 		user = Profile.objects.get(username = request.user.username)
-		if "basic" in request.GET:
-			if request.method=="POST" and "change_photo" in request.POST:
-				form = AvatarForm(request.POST)
-				if form.is_valid():
-					cd = form.cleaned_data
-					avatar = cd['avatar']
-					user.avatar = avatar
+		if request.method=="POST" and "change_photo" in request.POST:
+			form = AvatarForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				avatar = cd['avatar']
+				user.avatar = avatar
+				user.save()
+		if request.method=="POST" and "social_networks" in request.POST:
+			form = SocialNetworksForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				github = cd['github'].lower()
+				url_github = f"https://github.com/{github}"
+				r = requests.head(url_github, allow_redirects=True)
+				if r.status_code == 200:
+					user.github = url_github
 					user.save()
-		elif "information" in request.GET:
-			if request.method=="POST" and "social_networks" in request.POST:
-				form = SocialNetworksForm(request.POST)
-				if form.is_valid():
-					cd = form.cleaned_data
-					github = cd['github'].lower()
-					url_github = f"https://github.com/{github}"
-					r = requests.head(url_github, allow_redirects=True)
-					if r.status_code == 200:
-						user.github = url_github
-						user.save()
-					else:
-						messages.error(request, 'Такого пользователя GitHub несуществует')
+				else:
+					messages.error(request, 'Такого пользователя GitHub несуществует')
 		
 		context = {'user': user}
 	else:
