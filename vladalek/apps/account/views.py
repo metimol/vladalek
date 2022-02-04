@@ -63,7 +63,7 @@ def user_register(request):
 										user_code = generate_code()
 										Profile.objects.create(username=username.lower(), email=email, password=make_password(password), code=make_password(user_code), is_active=False)
 										text = "Пожалуйста, подтвердите Ваш аккаунт на сайте Vladalek."
-										url = "http://127.0.0.1:8000/account/"+username+"/"+user_code
+										url = f"http://127.0.0.1:8000/account/{username}/{user_code}"
 										msg_html = render_to_string('account/email.html', {'username': username, 'text': text, 'url': url})
 										send_mail('Подтверждение аккаунта', text, 'Metimol', [email], html_message=msg_html,)
 										return render(request, "account/url.html")
@@ -88,7 +88,6 @@ def user_activate(request, username, code):
 	try:
 		user = Profile.objects.get(username=username.lower())
 		if user.is_active==False and check_password(code, user.code):
-			code = code
 			user.is_active = True
 			user.code = None
 			user.save()

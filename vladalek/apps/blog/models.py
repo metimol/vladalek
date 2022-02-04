@@ -10,6 +10,15 @@ class Categories(models.Model):
 		verbose_name = "Категория"
 		verbose_name_plural = "Категории"
 
+class TemporaryCategories(models.Model):
+	category = models.CharField(max_length=25,  verbose_name='Категория', help_text='Название категории')
+	category_code = models.TextField(verbose_name='Код')
+	def __str__ (self):
+		return self.category
+	class Meta:
+		verbose_name = "Временная категория"
+		verbose_name_plural = "Временные категории"
+
 class Articles(models.Model):
 	categories = models.ForeignKey(Categories, null=True, related_name = "articles", on_delete = models.SET_NULL, verbose_name='Категория')
 	article_author = models.ForeignKey(Profile, related_name = "articles", on_delete = models.CASCADE, verbose_name='Автор статьи')

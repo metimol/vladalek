@@ -9,3 +9,6 @@ class CreateArticleForm(forms.Form):
 	article_title = forms.CharField(max_length=20)
 	article_text = forms.CharField(widget = TinyMCE(attrs={'cols': 80, 'rows': 30}))
 	article_about = forms.CharField(max_length=100)
+
+class CreateCategoryForm(forms.Form):
+	category = forms.CharField()

@@ -63,12 +63,17 @@
 .categories input[type=radio] {
 	display: none;
 }
-.category_radio {
+.category_radio, .create_category {
 	display: block;
 	cursor: pointer;
-	width: 100%;
+	width: 90%;
+	border-radius: 7px;
 	text-align: left;
-	padding-left: 0.5rem;
+	margin-top: 0.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	background: #cccccc;
+	padding: 0.5rem;
 	font-size: 1.6rem;
 }
 .part {

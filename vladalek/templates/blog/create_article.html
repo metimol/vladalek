@@ -32,6 +32,7 @@
 				{% for i in categories_list %}
 				<input name="categories" type="radio" id={{i.category}} value={{i.category}}><label for={{i.category}} class="category_radio">{{i.category}}</label>
 				{% endfor %}
+				<label class="create_category" onclick="window.location='{% url "blog:create_category" %}';">Создать категорию...</label>
 			</div>
 			<div class="part">
 				<input name="article_title" id="article_title" type="text" class="form-control" required autocomplete="off">

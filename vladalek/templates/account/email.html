@@ -36,7 +36,7 @@
 		<div class="header">Vladalek</div>
 		<h2>Приветствую, {{ username }}!</h2>
 		<h3>{{ text }}</h3>
-		<a href="{{ url }}">Перейти</a>
-		<h5>Если это были не Вы, то просто не переходите по ссылке.</h5>
+		<a href="{{ url }}">{% if for_admin %}OK{% else %}Перейти{% endif %}</a>
+		{% if not for_admin %}<h5>Если это были не Вы, то просто не переходите по ссылке.</h5>{% endif %}
 	</body>
 </html>
