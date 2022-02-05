@@ -162,9 +162,13 @@ def user_about(request):
 			if form.is_valid():
 				cd = form.cleaned_data
 				github = cd['github'].lower()
+				instagram = cd['instagram'].lower()
+				tiktok = cd['tiktok'].lower()
 				url_github = f"https://github.com/{github}"
-				r = requests.head(url_github, allow_redirects=True)
-				if r.status_code == 200:
+				url_instagram = f"https://www.instagram.com/{instagram}/"
+				url_tiktok = f"https://www.tiktok.com/@{tiktok}"
+				g = requests.head(url_github, allow_redirects=True)
+				if g.status_code == 200:
 					user.github = url_github
 					user.save()
 				else:

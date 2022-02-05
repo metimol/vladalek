@@ -34,3 +34,5 @@ class AvatarForm(forms.Form):
 	
 class SocialNetworksForm(forms.Form):
 	github = forms.CharField(required=False)
+	instagram = forms.CharField(required=False)
+	facebook = forms.CharField(required=False)
