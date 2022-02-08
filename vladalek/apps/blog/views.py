@@ -54,14 +54,26 @@ def detail(request, article_id):
 	except:
 		return render(request, "404.html")
 	coments_list = a.coments.order_by('id')[:8]
-	if request.method=="POST":
+	if request.method=="POST" and "add_coment" in request.POST:
 		form = ComentForm(request.POST)
 		if form.is_valid():
 			cd = form.cleaned_data
 			text = cd['text']
 			Coments.objects.create(articles=a ,coment_text=text, coment_author=Profile.objects.get(username=request.user.username))
 			return HttpResponseRedirect(reverse('blog:detail', args=(a.id,)))
-	context = {'a': a, 'coments_list': coments_list}
+	elif request.method=="POST" and "add_favourite" in request.POST:
+		if request.user.is_authenticated:
+			if request.user in a.favorites.all():
+				a.favorites.remove(request.user)
+			else:
+				a.favorites.add(request.user)
+		else:
+			return HttpResponseRedirect(reverse('account:login'))
+	if request.user in a.favorites.all():
+		fav = True
+	else:
+		fav = False
+	context = {'a': a, 'coments_list': coments_list, "fav": fav}
 	
 	return render(request, 'blog/detail.html', context,)
 

@@ -16,6 +16,18 @@
 		<div class="title">
 			<p>{{a.article_title}}</p>
 		</div>
+		<div class="bookmark">
+		<form method="POST" action="{% url  'blog:detail' a.id %}">
+			{% csrf_token %}
+			<button type="submit" name="add_favourite" id="bookmark">
+			{% if fav %}
+			<ion-icon name="bookmark"></ion-icon>
+			{% else %}
+			<ion-icon name="bookmark-outline"></ion-icon>
+			{% endif %}
+			</button>
+		</form>
+		</div>
 		<div class="content">
 			<div class="text">
 				{{a.article_text | safe}}
@@ -35,7 +47,7 @@
 						<label>Ваш комментарий</label>
 					</div>
 					<div class="next">
-						<input type="submit" value="Отправить" id="send" />
+						<input type="submit" name="add_coment" value="Отправить" id="send" />
 					</div>
 				</form>
 			</div>

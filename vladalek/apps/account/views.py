@@ -20,15 +20,18 @@ def user_login(request):
 			cd = form.cleaned_data
 			username = cd['username'].lower()
 			password = cd['password']
-			if '@' in username:
-				user = Profile.objects.get(email=username)
-			else:
-				user = Profile.objects.get(username=username)
-			if user is not None and user.is_active and check_password(request.POST.get('password'), user.password):
-				login(request, user)
-				return HttpResponseRedirect(reverse('home:index'))
-			else:
-					messages.error(request, "Неверный логин или пароль")
+			try:
+				if '@' in username:
+					user = Profile.objects.get(email=username)
+				else:
+					user = Profile.objects.get(username=username)
+				if user is not None and user.is_active and check_password(request.POST.get('password'), user.password):
+					login(request, user)
+					return HttpResponseRedirect(reverse('home:index'))
+				else:
+						messages.error(request, "Неверный логин или пароль")
+			except:
+				messages.error(request, "Неверный логин или пароль")
 	return render(request, 'account/login.html')
 
 def user_logout(request):
