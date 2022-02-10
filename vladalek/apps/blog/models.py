@@ -27,8 +27,7 @@ class Articles(models.Model):
 	article_about = models.TextField(help_text='О чём статья', verbose_name='Описание статьи', null=True)
 	pub_date = models.DateField(auto_now_add=True)
 	fixed = models.BooleanField(default=False, verbose_name="Закрепить")
-	favorites = models.ManyToManyField(Profile, related_name="favourites", blank=True)
-	likes = models.ManyToManyField(Profile, related_name='likes', blank=True)
+	favorites = models.ManyToManyField(Profile, related_name="favourites", blank=True, verbose_name = "Избранное")
 	def __str__(self):
 		return self.article_title
 	class Meta:

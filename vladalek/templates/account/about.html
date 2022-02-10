@@ -54,6 +54,7 @@
 		<div class="part" onclick="window.location='{% url "blog:detail" i.id %}';">
 			{{i.article_title}}
 			<i class="fa-solid fa-angle-right"></i>
+			<hr>
 		</div>
 		{% endfor %}
 		{% else %}

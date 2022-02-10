@@ -21,7 +21,8 @@
 	top: 0;
 	left: 0;
 	background: white;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 .next input {
 	display: block;
@@ -45,6 +46,7 @@
 .image {
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 0.7rem;
 	position: relative;
 	width: 8rem;
 	height: 8rem;
@@ -77,12 +79,16 @@
 	padding: 0.8rem;
 	font-size: 1.7rem;
 	text-align: left;
+	cursor: pointer;
 }
 .part i {
 	display: block;
 	position: absolute;
 	right: 2rem;
 	top: 1.2rem;
+}
+.part hr {
+	width: 90%;
 }
 .images {
 	display: flex;
@@ -97,6 +103,7 @@
 	width: 4rem;
 	height: 4rem;
 	margin-left: 0.5rem;
+	cursor: pointer;
 }
 .avatar_radio:checked + label img{
 	width: 3rem;

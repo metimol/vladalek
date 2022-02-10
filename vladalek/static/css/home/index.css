@@ -260,6 +260,7 @@
 	width: 35%;
 	top: 0;
 	height: auto;
+	margin-left: 5.5rem;
 	border-radius: 0.5rem;
 	background: #fd0e30;
 	padding: 0.14rem;
@@ -279,6 +280,7 @@
 .border_new {
 	background: #50dfdb;
 	padding-top: 0.15rem;
+	cursor: pointer;
 }
 .new {
 	background: #383838;
@@ -311,7 +313,6 @@
 .border_articles {
 	width: 40%;
 	top: 1rem;
-	margin-left: 5.5rem;
 	height: auto;
 	border-radius: 0.5rem;
 	background: #00ffff;
@@ -350,6 +351,7 @@
 .border_article {
 	background: #50dfdb;
 	padding-top: 0.15rem;
+	cursor: pointer;
 }
 .article {
 	background: #383838;
