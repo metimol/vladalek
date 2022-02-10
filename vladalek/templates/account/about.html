@@ -21,16 +21,10 @@
 			<i class="fas fa-pen-square" id="edit"></i>
 		</div>
 		<b id="username">{{user.username}}</b>
-		{% if not user.facebook or not user.instagram or not user.github %}
-		<div class="social_networks">
-			Добавить социальную сеть
+		<div class="part" id="bookmark">
+			<label>Избранное</label>
+			<i class="fa-solid fa-angle-right"></i>
 		</div>
-		{% endif %}
-		{% if user.github %}
-		<div class="get_socials">
-			<i class="fab fa-github">    {{ user.github|slice:"19:" }}</i>
-		</div>
-		{% endif %}
 	</div>
 	
 	<div class="edit_avatar">
@@ -54,35 +48,17 @@
 		</form>
 	</div>
 	
-	<div class="add_social">
-		Эти данные будут показаны в Ваших статьях
-		<form method="POST" action=".">
-			{% csrf_token %}
-			<div class="all_social">
-				<i class="fab fa-github"></i>
-				<div class="social">
-					<input name="github" id="github" type="text" class="form-control" required autocomplete="off">
-					<label>Логин в GitHub</label>
-				</div>
-			</div>
-			<div class="all_social">
-				<i class="fab fa-instagram"></i>
-				<div class="social">
-					<input name="instagram" id="instagram" type="text" class="form-control" required autocomplete="off">
-					<label>Логин в Instagram</label>
-				</div>
-			</div>
-			<div class="all_social">
-				<i class="fab fa-facebook"></i>
-				<div class="social">
-					<input name="facebook" id="facebook" type="text" class="form-control" required autocomplete="off">
-					<label>Логин в Facebook</label>
-				</div>
-			</div>
-			<div class="next">
-				<input type="submit" name="social_networks" value="ОК"  />
-			</div>
-		</form>
+	<div class="favourites">
+		{% if bookmark %}
+		{% for i in bookmark %}
+		<div class="part" onclick="window.location='{% url "blog:detail" i.id %}';">
+			{{i.article_title}}
+			<i class="fa-solid fa-angle-right"></i>
+		</div>
+		{% endfor %}
+		{% else %}
+		У вас нет избранных статей
+		{% endif %}
 	</div>
 </div>
 

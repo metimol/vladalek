@@ -153,6 +153,7 @@ def reset_confirm(request, username, code):
 def user_about(request):
 	if request.user.is_authenticated:
 		user = Profile.objects.get(username = request.user.username)
+		bookmark = user.favourites.all()
 		if request.method=="POST" and "change_photo" in request.POST:
 			form = AvatarForm(request.POST)
 			if form.is_valid():
@@ -160,24 +161,8 @@ def user_about(request):
 				avatar = cd['avatar']
 				user.avatar = avatar
 				user.save()
-		if request.method=="POST" and "social_networks" in request.POST:
-			form = SocialNetworksForm(request.POST)
-			if form.is_valid():
-				cd = form.cleaned_data
-				github = cd['github'].lower()
-				instagram = cd['instagram'].lower()
-				tiktok = cd['tiktok'].lower()
-				url_github = f"https://github.com/{github}"
-				url_instagram = f"https://www.instagram.com/{instagram}/"
-				url_tiktok = f"https://www.tiktok.com/@{tiktok}"
-				g = requests.head(url_github, allow_redirects=True)
-				if g.status_code == 200:
-					user.github = url_github
-					user.save()
-				else:
-					messages.error(request, 'Такого пользователя GitHub несуществует')
 		
-		context = {'user': user}
+		context = {'user': user, "bookmark": bookmark}
 	else:
 		return HttpResponseRedirect(reverse('account:login'))
 	
