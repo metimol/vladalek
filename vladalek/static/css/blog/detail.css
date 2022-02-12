@@ -1,59 +1,43 @@
 .card {
 	position: relative;
-	width: 90%;
+	width: 100%;
 	min-height: 200px;
 	background: #fff;
-	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-	border-radius: 30px;
-	margin-left: auto;
-	margin-right: auto;
 	margin-bottom: 20px;
-	padding-bottom: 1.5rem;
+	overflow: hidden;
 }
-.card i {
-	position: absolute;
-	top: 30px;
-	left: -15px;
-	width: 270px;
-	height: 50px;
-	background: #af43f1;
-	border-radius: 30px;
-	border-bottom-left-radius: 0;
-}
-.card i::before {
+.card::before {
 	content: '';
 	position: absolute;
-	top: 50px;
-	width: 15px;
-	height: 30px;
-	background: #8045c6;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
-	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 24px;
+	background: linear-gradient(-135deg, #383838 12px, transparent 0%),  linear-gradient(135deg, #383838 12px, transparent 0%);
+	background-size: 24px;
 }
-.card i::after {
+.card::after {
 	content: '';
 	position: absolute;
-	top: 50px;
-	width: 15px;
-	height: 15px;
-	background: #af43f1;
-	z-index: 1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 24px;
+	background: linear-gradient(-45deg, #383838 12px, transparent 0%),  linear-gradient(45deg, #383838 12px, transparent 0%);
+	background-size: 24px;
 }
 .title {
 	position: relative;
 	top: 30px;
-	height: 50px;
-	width: 270px;
-	z-index: 3;
+	width: 75%;
+	padding: 0.5rem;
+	background: #af43f1;
+	border-radius: 30px;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 }
 .title p {
 	font-family: 'Pacifico', cursive;
-	position: absolute;
-	width: 90%;
-	text-align: center;
-	top: 50%;
-	transform: translate(0, -50%);
 	font-size: 22px;
 	color: white;
 }
@@ -69,34 +53,32 @@
 	border: none;
 }
 .text {
-	width: 90%;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
+	padding: 10px;
+	padding-bottom: 25px;
 	font-size: 21px;
 }
 .date {
 	text-align: right;
-	margin-top: 20px;
-	position: relative;
-	width: 100%;
+	width: 90%;
 	float: right;
-	padding-right: 15px;
+	margin-right: 10px;
 	font-size: 15px;
 	font-family: 'Lobster', cursive;
 }
 .coments {
-	width: 90%;
-	margin-top: 5rem;
+	width: 100%;
+	margin-top: 3rem;
 	margin-left: auto;
 	margin-right: auto;
+	border-top: 3px dashed #000;
 	text-align: center;
 	background: #c0c0c0;
-	border-radius: 12px;
 	overflow: hidden;
-	padding-bottom: 15px;
+	padding-bottom: 35px;
 }
-.coments .title {
+.coments span {
+	display: block;
 	top: 10px;
 	font-family: 'Pacifico', cursive;
 	font-size: 33px;
@@ -274,6 +256,7 @@
 	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 0.5rem;
 	outline: none;
 }
 .detail_coments a:hover {

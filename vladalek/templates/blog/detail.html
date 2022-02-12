@@ -12,7 +12,6 @@
 {% block content %}
 	
 	<div class="card">
-		<i></i>
 		<div class="title">
 			<p>{{a.article_title}}</p>
 		</div>
@@ -37,7 +36,7 @@
 			</div>
 		</div>
 		<div class="coments">
-			<div class="title">Коментарии:</div>
+			<span>Коментарии:</span>
 			{% if user.is_authenticated %}
 			<div class="add_coment">
 				<form action="{% url  'blog:detail' a.id %}" method="POST">
