@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.hashers import make_password, check_password
 from .models import Profile
-from .forms import LoginForm, RegisterForm, ResetForm, ResetConfirmForm, AvatarForm, SocialNetworksForm
+from .forms import LoginForm, RegisterForm, ResetForm, ResetConfirmForm, AvatarForm, DeleteForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -25,7 +25,7 @@ def user_login(request):
 					user = Profile.objects.get(email=username)
 				else:
 					user = Profile.objects.get(username=username)
-				if user is not None and user.is_active and check_password(request.POST.get('password'), user.password):
+				if user is not None and user.is_active and check_password(password, user.password):
 					login(request, user)
 					return HttpResponseRedirect(reverse('home:index'))
 				else:
@@ -167,3 +167,23 @@ def user_about(request):
 		return HttpResponseRedirect(reverse('account:login'))
 	
 	return render(request, 'account/about.html', context)
+
+def user_delete(request, username):
+	if request.user.is_authenticated:
+		if request.user.username==username:
+			user = Profile.objects.get(username = request.user.username)
+			if request.method=="POST":
+				form = DeleteForm(request.POST)
+				if form.is_valid():
+					cd = form.cleaned_data
+					password = cd['password']
+					if check_password(password, user.password):
+						user.delete()
+					else:
+						messages.error(request, 'Неверный пароль')
+		else:
+			return HttpResponseRedirect(reverse('account:login'))
+	else:
+		return HttpResponseRedirect(reverse('account:login'))
+	
+	return render(request, 'account/delete.html',)

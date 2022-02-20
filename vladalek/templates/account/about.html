@@ -25,6 +25,8 @@
 			<label>Избранное</label>
 			<i class="fa-solid fa-angle-right"></i>
 		</div>
+		<div class="part" onclick="window.location='{% url "blog:create_article" %}';">Создать статью</div>
+		<div class="part" color=red onclick="window.location='{% url "account:delete" user.username %}';">Удалить аккаунт</div>
 	</div>
 	
 	<div class="edit_avatar">
@@ -53,7 +55,6 @@
 		{% for i in bookmark %}
 		<div class="part" onclick="window.location='{% url "blog:detail" i.id %}';">
 			{{i.article_title}}
-			<i class="fa-solid fa-angle-right"></i>
 			<hr>
 		</div>
 		{% endfor %}

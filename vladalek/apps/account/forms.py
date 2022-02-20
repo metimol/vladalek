@@ -32,7 +32,5 @@ class ResetConfirmForm(forms.Form):
 class AvatarForm(forms.Form):
 	avatar = forms.CharField()
 	
-class SocialNetworksForm(forms.Form):
-	github = forms.CharField(required=False)
-	instagram = forms.CharField(required=False)
-	facebook = forms.CharField(required=False)
+class DeleteForm(forms.Form):
+	password = forms.CharField(widget=forms.PasswordInput)
