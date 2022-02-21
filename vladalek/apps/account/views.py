@@ -168,21 +168,18 @@ def user_about(request):
 	
 	return render(request, 'account/about.html', context)
 
-def user_delete(request, username):
+def user_delete(request):
 	if request.user.is_authenticated:
-		if request.user.username==username:
-			user = Profile.objects.get(username = request.user.username)
-			if request.method=="POST":
-				form = DeleteForm(request.POST)
-				if form.is_valid():
-					cd = form.cleaned_data
-					password = cd['password']
-					if check_password(password, user.password):
-						user.delete()
-					else:
-						messages.error(request, 'Неверный пароль')
-		else:
-			return HttpResponseRedirect(reverse('account:login'))
+		user = Profile.objects.get(username = request.user.username)
+		if request.method=="POST":
+			form = DeleteForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				password = cd['password']
+				if check_password(password, user.password):
+					user.delete()
+				else:
+					messages.error(request, 'Неверный пароль')
 	else:
 		return HttpResponseRedirect(reverse('account:login'))
 	

@@ -73,13 +73,16 @@
 	font-size: 4rem;
 	margin-bottom: 30px;
 }
-.part {
+.part, .part_red {
 	position: relative;
 	width: 100%;
 	padding: 0.8rem;
 	font-size: 1.7rem;
 	text-align: left;
 	cursor: pointer;
+}
+.part_red {
+	color: red;
 }
 .part i {
 	display: block;

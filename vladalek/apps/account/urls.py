@@ -10,5 +10,5 @@ urlpatterns = [
 	path('<str:username>/<str:code>/', user_activate, name="activate"),
 	path('password_reset/', password_reset, name="reset"),
 	path('<str:username>/<str:code>/reset/', reset_confirm, name="reset_confirm"),
-	path('<str:username>/delete/', user_delete, name="delete"),
+	path('delete/', user_delete, name="delete"),
 ]
