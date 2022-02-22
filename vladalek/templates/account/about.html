@@ -25,8 +25,13 @@
 			<label>Избранное</label>
 			<i class="fa-solid fa-angle-right"></i>
 		</div>
+		<div class="part" id="articles">
+			<label>Мои статьи</label>
+			<i class="fa-solid fa-angle-right"></i>
+		</div>
 		<div class="part" onclick="window.location='{% url "blog:create_article" %}';">Создать статью</div>
-		<div class="part_red" onclick="window.location='{% url "account:delete" %}';">Удалить аккаунт</div>
+		<div class="part_red" onclick="window.location='{% url "account:logout" %}';">Выйти</div>
+		<div class="part_delete" onclick="window.location='{% url "account:delete" %}';">Удалить аккаунт</div>
 	</div>
 	
 	<div class="edit_avatar">
@@ -60,6 +65,19 @@
 		{% endfor %}
 		{% else %}
 		У вас нет избранных статей
+		{% endif %}
+	</div>
+	
+	<div class="articles">
+		{% if articles %}
+		{% for i in articles %}
+		<div class="part" onclick="window.location='{% url "blog:detail" i.id %}';">
+			{{i.article_title}}
+			<hr>
+		</div>
+		{% endfor %}
+		{% else %}
+		У вас нет собственных статей
 		{% endif %}
 	</div>
 </div>

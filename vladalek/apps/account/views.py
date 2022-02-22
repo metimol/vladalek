@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 import requests
 
 def user_login(request):
+	next_url = request.GET.get('next_url', '')
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
@@ -29,9 +30,10 @@ def user_login(request):
 					login(request, user)
 					return HttpResponseRedirect(reverse('home:index'))
 				else:
-						messages.error(request, "Неверный логин или пароль")
+					messages.error(request, "Неверный логин или пароль")
 			except:
 				messages.error(request, "Неверный логин или пароль")
+			
 	return render(request, 'account/login.html')
 
 def user_logout(request):
@@ -154,6 +156,7 @@ def user_about(request):
 	if request.user.is_authenticated:
 		user = Profile.objects.get(username = request.user.username)
 		bookmark = user.favourites.all()
+		articles = user.articles.all()
 		if request.method=="POST" and "change_photo" in request.POST:
 			form = AvatarForm(request.POST)
 			if form.is_valid():
@@ -162,7 +165,7 @@ def user_about(request):
 				user.avatar = avatar
 				user.save()
 		
-		context = {'user': user, "bookmark": bookmark}
+		context = {'user': user, "bookmark": bookmark, "articles": articles}
 	else:
 		return HttpResponseRedirect(reverse('account:login'))
 	
@@ -178,6 +181,7 @@ def user_delete(request):
 				password = cd['password']
 				if check_password(password, user.password):
 					user.delete()
+					return HttpResponseRedirect(reverse('home:index'))
 				else:
 					messages.error(request, 'Неверный пароль')
 	else:
