@@ -84,7 +84,7 @@
 .part_red {
 	color: red;
 }
-.part i {
+.part i#angle {
 	display: block;
 	position: absolute;
 	right: 2rem;
@@ -92,6 +92,20 @@
 }
 .part hr {
 	width: 90%;
+}
+.part .change {
+	position: absolute;
+	right: 1.8rem;
+	top: 0.5rem;
+	font-size: 0.9rem;
+	text-align: left;
+	color: #48c9f7;
+}
+.part .change i {
+	cursor: pointer;
+}
+.part .change i#delete {
+	color: red;
 }
 .part_delete {
 	position: absolute;
