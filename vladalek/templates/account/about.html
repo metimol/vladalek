@@ -41,11 +41,11 @@
 			<div class="images">
 				{% if user.is_superuser %}
 				{% for i in '012345678'|make_list %}
-					<input name="avatar" type="radio" id="{{i}}.png" value="https://metimol.sirv.com/Avatars/{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="https://metimol.sirv.com/Avatars/{{i}}.png" /></label>
+					<input name="avatar" type="radio" id="{{i}}.png" value="/static/media/avatars/{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="/static/media/avatars/{{i}}.png" /></label>
 				{% endfor %}
 				{% else %}
 				{% for i in '12345678'|make_list %}
-					<input name="avatar" type="radio" id="{{i}}.png" value="https://metimol.sirv.com/Avatars/{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="https://metimol.sirv.com/Avatars/{{i}}.png" /></label>
+					<input name="avatar" type="radio" id="{{i}}.png" value="/static/media/avatars/{{i}}.png" class="avatar_radio"><label for="{{i}}.png"><img src="/static/media/avatars/{{i}}.png" /></label>
 				{% endfor %}
 				{% endif %}
 			</div>
@@ -71,12 +71,12 @@
 	<div class="articles">
 		{% if articles %}
 		{% for i in articles %}
-		<div class="part" onclick="window.location='{% url "blog:detail" i.id %}';">
+		<div class="part">
 			{{i.article_title}}
 			<div class="change">
-				<i class="fa-solid fa-pen" id="change">Изменить</i>
+				<i class="fa-solid fa-pen" id="change" onclick="window.location='{% url "blog:edit_article" i.id %}';">Изменить</i>
 				<br>
-				<i class="fa-solid fa-trash" id="delete">Удалить</i>
+				<i class="fa-solid fa-trash" id="delete" onclick="window.location='{% url "blog:detail" i.id %}';">Удалить</i>
 			</div>
 			<hr>
 		</div>
