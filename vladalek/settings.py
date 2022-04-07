@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'grappelli',
     'tinymce',
+    'social_django',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
@@ -55,6 +56,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'libraries': {
             	'pagination_tags': 'vladalek.templatetags.pagination_tags',
@@ -75,6 +78,19 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'account.Profile'
 
+AUTHENTICATION_BACKENDS = (
+	'social_core.backends.google.GoogleOAuth2',
+	'social_core.backends.twitter.TwitterOAuth',
+	'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ["google_key"]
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["google_secret_key"]
+
+LOGIN_URL = "/account/login/"
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -110,7 +126,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ["login"]
 EMAIL_HOST_PASSWORD = os.environ["password"]
-DEFAULT_FROM_EMAIL = 'Metimol'
+DEFAULT_FROM_EMAIL = os.environ["login"]
 DEFAULT_TO_EMAIL = os.environ["default_email"]
 
 

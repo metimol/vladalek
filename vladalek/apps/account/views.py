@@ -70,7 +70,7 @@ def user_register(request):
 										text = "Пожалуйста, подтвердите Ваш аккаунт на сайте Vladalek."
 										url = f"http://127.0.0.1:8000/account/{username}/{user_code}"
 										msg_html = render_to_string('account/email.html', {'username': username, 'text': text, 'url': url})
-										send_mail('Подтверждение аккаунта', text, 'Metimol', [email], html_message=msg_html,)
+										send_mail('Подтверждение аккаунта', text, 'vladalek.company@gmail.com', [email], html_message=msg_html,)
 										return render(request, "account/url.html")
 									else:
 										messages.error(request, 'Эта почта уже используется другим аккаунтом')
