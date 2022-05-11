@@ -32,6 +32,7 @@
 	</div>
 </div>
 
+{% if articles_list %}
 {% for a in articles_list %}
 <div class="card" onclick="window.location='{% url "blog:detail" a.id %}';">
 	<div class="title">
@@ -49,6 +50,9 @@
 	</div>
 </div>
 {% endfor %}
+{% else %}
+<div class="no">Статей нет :(</div>
+{% endif %}
 
 <div class="pages">
 	{% if paginator.num_pages > 7 %}

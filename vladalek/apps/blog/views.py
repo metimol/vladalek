@@ -16,6 +16,7 @@ from account.models import Profile
 def index(request):
 	category = request.GET.get('category', '')
 	page_num = request.GET.get('page', '')
+	categories_list = Categories.objects.order_by('category')
 	if category:
 		try:
 			cat = Categories.objects.get(category=category)
@@ -25,7 +26,7 @@ def index(request):
 	else:
 		articles_list = Articles.objects.order_by('-id')
 	if articles_list:
-		paginator = Paginator(articles_list, 2)
+		paginator = Paginator(articles_list, 10)
 		if not page_num:
 			page_num = 1
 		page = paginator.get_page(page_num)
@@ -41,10 +42,9 @@ def index(request):
 			else:
 				for i in range(1, paginator.num_pages+1):
 					page_list.append(i)
-		categories_list = Categories.objects.order_by('category')
 		context = {'page': page, 'articles_list': page.object_list, 'categories_list': categories_list, 'category': category, 'paginator': paginator, 'page_list':page_list}
 	else:
-		return render(request, "404.html")
+		return render(request, "blog/index.html", {"categories_list": categories_list})
 	
 	return render(request, 'blog/index.html', context,)
 
