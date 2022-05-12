@@ -1,0 +1,138 @@
+.card {
+	position: relative;
+	width: 95%;
+	min-height: 21rem;
+	margin: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	box-sizing: border-box;
+	border-radius: 18px;
+	text-align: center;
+	padding-bottom: 3.7rem;
+	overflow: hidden;
+}
+.edit_avatar, .favourites, .articles {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	top: 0;
+	left: 0;
+	background: white;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.next input {
+	display: block;
+	font-family: 'Pacifico', cursive;
+	width: 60%;
+	height: 40px;
+	border-radius: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	font-size: 15px;
+	background: #af43f1;
+	color: white;
+	transition: 0.6s;
+	outline: none;
+}
+.next input:hover {
+	box-shadow: 0 0 10px #af43f1,
+	0 0 30px #af43f1;
+}
+.image {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.7rem;
+	position: relative;
+	width: 8rem;
+	height: 8rem;
+	cursor: pointer;
+}
+.image img {
+	width: 8rem;
+	height: 8rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.image i#no_avatar {
+	font-size: 8rem;
+}
+.image i#edit {
+	display: block;
+	position: absolute;
+	font-size: 1.5rem;
+	bottom: 0;
+	right: 0;
+}
+.title b#username {
+	font-family: cursive;
+	font-size: 4rem;
+	margin-bottom: 30px;
+}
+.part, .part_red {
+	position: relative;
+	width: 100%;
+	padding: 0.8rem;
+	font-size: 1.7rem;
+	text-align: left;
+	cursor: pointer;
+}
+.part_red {
+	color: red;
+}
+.part i#angle {
+	display: block;
+	position: absolute;
+	right: 2rem;
+	top: 1.2rem;
+}
+.part hr {
+	width: 90%;
+}
+.part .change {
+	position: absolute;
+	right: 1.8rem;
+	top: 0.5rem;
+	font-size: 0.9rem;
+	text-align: left;
+	color: #48c9f7;
+}
+.part .change i {
+	cursor: pointer;
+}
+.part .change i#delete {
+	color: red;
+}
+.part_delete {
+	position: absolute;
+	bottom: 0.5rem;
+	width: 100%;
+	cursor: pointer;
+	font-size: 1.2rem;
+	color: red;
+}
+.images {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.images input[type=radio] {
+	display: none;
+}
+.images img {
+	width: 4rem;
+	height: 4rem;
+	margin-left: 0.5rem;
+	cursor: pointer;
+}
+.avatar_radio:checked + label img{
+	width: 3rem;
+	height: 3rem;
+	border: 5px solid #af43f1;
+	border-radius: 100px;
+}

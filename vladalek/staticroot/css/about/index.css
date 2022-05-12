@@ -1,0 +1,39 @@
+.about {
+	font-family: 'Fruktur', cursive;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.7rem;
+	color: white;
+	overflow: hidden;
+	text-align: center;
+}
+.part {
+	margin-bottom: 4rem;
+}
+.about h2 {
+	font-family: 'Lobster', cursive;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+.telegram {
+	width: 75%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	background: #50dfdb;
+	border-radius: 0.6rem;
+	text-align: center;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	transition: 0.5s;
+}
+.telegram p {
+	font-size: 1.4rem;
+	font-family: 'Lobster', cursive;
+	text-align: center;
+}
+.telegram:hover {
+	box-shadow: 0 0 1rem #50dfdb,
+	0 0 1.5rem #50dfdb;
+}

@@ -11,3 +11,7 @@ def index(request):
 		admin = None
 	context = {'fixed_list': fixed_list, 'articles_list': articles_list, "admin": admin}
 	return render(request, 'home/index.html', context,)
+
+def sitemap(request):
+	
+	return render(request, 'sitemap/sitemap.xml')
