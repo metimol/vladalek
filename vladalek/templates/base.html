@@ -24,13 +24,13 @@
 		{% block script %}{% endblock %}
 	</head>
 
-	<body>
+	{% block body %}<body>{% endblock %}
 		<header>
 			<div id="mySidenav" class="sidenav"><i class="fas fa-times" id="closebtn"></i>
 			{% if user.is_superuser %}
 			<a href="/admin">Админка</a>
 			{% endif %}
-			<a href="{% url 'home:index' %}">Главная</a><a href="{% url 'blog:index' %}">Блог</a>
+			<a href="{% url 'home:index' %}">Главная</a><a href="{% url 'blog:index' %}">Блог</a><a href="{% url 'jarvis:api' %}">Джарвис</a>
 			{% if user.is_anonymous %}
 			<a href="{% url 'account:login' %}">Вход</a>
 			{% endif %}

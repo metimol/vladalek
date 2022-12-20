@@ -1,16 +1,10 @@
-import random
 import string
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.core.paginator import Paginator
-from django.contrib import messages
-from django.conf import settings
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.contrib.auth.hashers import make_password, check_password
-from .models import Articles, Coments, Categories, TemporaryCategories
-from .forms import ComentForm, CreateArticleForm, CreateCategoryForm, EditArticleForm
+from .models import Articles, Coments, Categories
+from .forms import ComentForm
 from account.models import Profile
 
 def index(request):
@@ -92,88 +86,3 @@ def coments_list(request, article_id):
 	context = {"page": page, "coments_list": page.object_list, "a": a}
 	
 	return render(request, "blog/coments_list.html", context,)
-
-def create_article(request):
-	if request.user.is_authenticated:
-		categories_list = Categories.objects.order_by('category')
-		if request.method=="POST":
-			form = CreateArticleForm(request.POST)
-			if form.is_valid():
-				cd = form.cleaned_data
-				categories = cd['categories']
-				article_title = cd['article_title']
-				article_text = cd['text_article']
-				article_about = cd['article_about']
-				Articles.objects.create(categories=Categories.objects.get(category=categories), article_author=Profile.objects.get(username=request.user.username), article_title=article_title, article_text=article_text, article_about=article_about)
-				return HttpResponseRedirect(reverse('blog:index'))
-		context = {'categories_list': categories_list, 'CreateArticleForm': CreateArticleForm}
-	else:
-		return HttpResponseRedirect(reverse('account:login'))
-	
-	return render(request, "blog/create_article.html", context,)
-
-def generate_code():
-    chars=string.ascii_uppercase + string.ascii_lowercase + string.digits
-    return ''.join(random.choice(chars) for x in range(20))
-
-def create_category(request):
-	if request.user.is_authenticated:
-		if request.method=="POST":
-			form = CreateCategoryForm(request.POST)
-			if form.is_valid():
-				cd = form.cleaned_data
-				category = cd['category']
-				if len(category)<20:
-					if not Categories.objects.filter(category=category).exists():
-						if not TemporaryCategories.objects.filter(category=category).exists():
-							code = generate_code()
-							TemporaryCategories.objects.create(category=category, category_code=make_password(code))
-							text = f"Пользователь {request.user.username} хочет создать категорию {category}"
-							url = f"http://127.0.0.1:8000/blog/create_category/{category}/{code}"
-							msg_html = render_to_string('account/email.html', {'username': 'Metimol', 'text': text, 'url': url, 'for_admin': True})
-							email = "rdgo16480@gmail.com"
-							send_mail('Создание категории', text, 'Metimol', [email], html_message=msg_html,)
-							return HttpResponseRedirect(reverse('blog:index'))
-						else:
-							messages.error(request, "Эта категория уже рассматривается для добавления")
-					else:
-						messages.error(request, "Такая категория уже существует")
-				else:
-					messages.error(request, "Длина названия не больше 20 символов")
-	else:
-		return HttpResponseRedirect(reverse('account:login'))
-	
-	return render(request, "blog/create_category.html",)
-		
-def create_category_confirm(request, category, code):
-	try:
-		c = TemporaryCategories.objects.get(category=category)
-	except:
-		return render(request, "404.html")
-	if check_password(code, c.category_code):
-		Categories.objects.create(category=c.category)
-		c.delete()
-		return HttpResponseRedirect(reverse('home:index'))
-
-def edit_article(request, title):
-	try:
-		article = Articles.objects.get(id=title)
-	except:
-		return render(request, "404.html")
-	if request.user.is_authenticated and request.user==article.article_author:
-		if request.method=="POST":
-			form = EditArticleForm(request.POST)
-			if form.is_valid():
-				cd = form.cleaned_data
-				article_title = cd['article_title']
-				article_text = cd['text_article']
-				article_about = cd['article_about']
-				article.article_title, article.article_text, article.article_about = article_title, article_text, article_about
-				article.save()
-				return HttpResponseRedirect(reverse('account:about'))
-		context = {'article': article}
-	else:
-		return render(request, "404.html")
-	
-	return render(request, "blog/edit_article.html", context,)
-		

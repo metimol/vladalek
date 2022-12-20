@@ -1,0 +1,57 @@
+.chat {
+	width: 85%;
+	margin-top: 3rem;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background: #c0c0c0;
+	overflow: hidden;
+	padding: 2rem;
+	border-radius: 1rem;
+}
+.block {
+	position: relative;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.block input {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	padding: 10px 0;
+	font-size: 16px;
+	border: none;
+	border-bottom: 1px solid;
+	background: transparent;
+	outline: none;
+}
+.block label {
+	position: absolute;
+	top:0;
+	left: 0;
+	padding: 25px 0;
+	font-size: 16px;
+	pointer-events: none;
+	transition: 0.3s;
+}
+.block input:focus ~ label,
+.block input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #008080;
+	font-size: 12px;
+}
+.send {
+	width: 70%;
+	padding: 0.4rem;
+	margin-top: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+	background: #aefbfc;
+	color: black;
+	text-align: center;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}

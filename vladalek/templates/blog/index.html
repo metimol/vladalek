@@ -74,10 +74,4 @@
 	{% endif %}
 </div>
 
-{% if user.is_authenticated %}
-<div class="add" onclick="window.location='{% url "blog:create_article" %}';">
-	<ion-icon name="add-circle-outline"></ion-icon>
-</div>
-{% endif %}
-
 {% endblock %}

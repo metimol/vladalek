@@ -106,18 +106,6 @@
 	bottom: -10px;
 	height: 25px;
 }
-.coment::before {
-	left: -7px;
-	width: 20px;
-	background-color: white;
-	border-bottom-right-radius: 26px 24px;
-}
-.coment::after {
-	left: -26px;
-	width: 26px;
-	background-color: #383838;
-	border-bottom-right-radius: 50px;
-}
 .you_coment {
 	right: 14px;
 	border-bottom-right-radius: 0;

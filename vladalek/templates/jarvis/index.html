@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/jarvis/style.css' %}">
+<script type="text/javascript" src="{% static 'js/jarvis/script.js' %}"></script>
+{% endblock %}
+{% block title %}Jarvis{% endblock %}
+{% block content %}
+<section class="msger">
+  <main class="msger-chat" id="msger-chat">
+    <div class="msg right-msg">
+      <div
+       class="msg-img"
+       style="background-image: url(https://cdn-icons-png.flaticon.com/512/86/86483.png)"
+      ></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">User</div>
+          <div class="msg-info-time">20:49</div>
+        </div>
+
+        <div class="msg-text">
+          Привет!
+        </div>
+      </div>
+    </div>
+    <div class="msg left-msg">
+      <div
+       class="msg-img"
+       style="background-image: url(https://cdn-icons-png.flaticon.com/512/86/86494.png)"
+      ></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">Jarvis</div>
+          <div class="msg-info-time">20:49</div>
+        </div>
+
+        <div class="msg-text">
+          Здравствуйте! 😄
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="msger-inputarea" id="msger-inputarea">
+    <input type="text" class="msger-input" placeholder="Ваше сообщение..." id="msger-input">
+    <div class="msger-send-btn" id="button_send"><ion-icon name="send"></ion-icon></div>
+  </div>
+</section>
+{% endblock %}

@@ -1,19 +1,16 @@
 import os, sys
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
-
 
 SECRET_KEY = os.environ['secret']
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,6 +25,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
+    'jarvis.apps.JarvisConfig',
     'account.apps.AccountConfig',
 ]
 
@@ -68,7 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vladalek.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -106,29 +103,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Kiev'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 STATICFILES_DIRS = [
 	os.path.join(PROJECT_ROOT, 'static'),
 ]
-
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ["login"]
-EMAIL_HOST_PASSWORD = os.environ["password"]
-DEFAULT_FROM_EMAIL = os.environ["login"]
-DEFAULT_TO_EMAIL = os.environ["default_email"]
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
