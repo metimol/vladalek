@@ -12,7 +12,7 @@
 	padding-bottom: 3.7rem;
 	overflow: hidden;
 }
-.edit_avatar, .favourites, .articles {
+.edit_avatar, .favourites{
 	display: none;
 	position: absolute;
 	height: 100%;

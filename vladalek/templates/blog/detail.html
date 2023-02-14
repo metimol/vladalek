@@ -36,14 +36,14 @@
 			</div>
 		</div>
 		<div class="coments">
-			<span>Коментарии:</span>
+			<span>Коментарі:</span>
 			{% if user.is_authenticated %}
 			<div class="add_coment">
 				<form action="{% url  'blog:detail' a.id %}" method="POST">
 					{% csrf_token %}
 					<div class="block">
 						<input name="text" id="text" type="text" class="form-control" required autocomplete="off">
-						<label>Ваш комментарий</label>
+						<label>Ваш комментар</label>
 					</div>
 					<div class="next">
 						<input type="submit" name="add_coment" value="Отправить" id="send" />
@@ -52,7 +52,7 @@
 			</div>
 			{% else %}
 			<div class="non_auth">
-				<a href="{% url 'account:login' %}"><span>Войдите</span></a>, чтобы оставить коментарий.
+				<a href="{% url 'account:login' %}"><span>Увійдіть</span></a>, щоб залишити коментар.
 			</div>
 			{% endif %}
 			{% for i in coments_list %}
@@ -84,7 +84,7 @@
 			{% endfor %}
 			{% if coments_list|length > 7 %}
 			<div class="detail_coments">
-				<a href="{% url 'blog:coments_list' a.id %}"><span>Читать все комментарии</span></a>
+				<a href="{% url 'blog:coments_list' a.id %}"><span>Читати всі коментарі</span></a>
 			</div>
 			{% endif %}
 		</div>

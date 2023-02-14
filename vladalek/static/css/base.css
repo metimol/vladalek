@@ -2,13 +2,11 @@
 	margin: 0;
 	padding: 0;
 }
-html, body {
-	height: 100%;
-}
 body {
-	background: #383838;
-	font-family: 'Fruktur', cursive;
+	background-color: #FFE53B;
+  background: linear-gradient(147deg, #FFE53B 0%, #fd3838 74%);
 	font-family: 'Source Sans Pro', sans-serif;
+	min-height: 100vh;
 }
 header {
    height: 3.375rem;
@@ -103,31 +101,5 @@ header .avatar i {
 .content {
 	margin-top: 3.375rem;
 	width: 100%;
-	min-height: 100%;
-	padding-top: 1rem;
-}
-footer {
-	position: relative;
-	z-index: 5;
-	width: 100%;
-	background: #202020;
-	font-size: 2.1rem;
-	color: white;
-	padding-bottom: 0.8rem;
-	overflow: hidden;
-	margin-top: 1rem;
-}
-footer i {
-	margin-left: 0.8rem;
-	cursor: pointer;
-}
-footer p {
-	float: right;
-	font-size: 1rem;
-}
-.footer_text {
-	width: 100%;
-	margin-top: 0.5rem;
-	text-align: center;
-	font-family: 'ZCOOL KuaiLe', cursive;
+	padding-top: 5vh;
 }

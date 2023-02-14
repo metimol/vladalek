@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'social_django',
     'blog.apps.BlogConfig',
     'home.apps.HomeConfig',
-    'about.apps.AboutConfig',
     'jarvis.apps.JarvisConfig',
     'account.apps.AccountConfig',
 ]
@@ -103,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ua'
 TIME_ZONE = 'Europe/Kiev'
 USE_I18N = True
 USE_L10N = True

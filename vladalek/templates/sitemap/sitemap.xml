@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-		<!--	created with www.mysitemapgenerator.com	-->
-		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 	<loc>https://vladalek.pythonanywhere.com/</loc>
 	<lastmod>2022-05-12T09:31:54+01:00</lastmod>
@@ -9,7 +8,7 @@
 <url>
 	<loc>https://vladalek.pythonanywhere.com/blog/</loc>
 	<lastmod>2022-05-12T09:31:54+01:00</lastmod>
-	<priority>0.8</priority>
+	<priority>0.9</priority>
 </url>
 <url>
 	<loc>https://vladalek.pythonanywhere.com/account/login/</loc>
@@ -20,5 +19,10 @@
 	<loc>https://vladalek.pythonanywhere.com/about/</loc>
 	<lastmod>2022-05-12T09:31:54+01:00</lastmod>
 	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://vladalek.pythonanywhere.com/jarvis/</loc>
+	<lastmod>2022-05-12T09:31:54+01:00</lastmod>
+	<priority>0.9</priority>
 </url>
 </urlset>

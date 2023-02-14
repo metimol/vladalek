@@ -22,19 +22,13 @@
 		</div>
 		<b id="username">{{user.username}}</b>
 		<div class="part" id="bookmark">
-			<label>Избранное</label>
-			<i class="fa-solid fa-angle-right" id="angle"></i>
+			<label>Обране</label>
 		</div>
-		<div class="part" id="articles">
-			<label>Мои статьи</label>
-			<i class="fa-solid fa-angle-right" id="angle"></i>
-		</div>
-		<div class="part_red" onclick="window.location='{% url "account:logout" %}';">Выйти</div>
-		<div class="part_delete" onclick="window.location='{% url "account:delete" %}';">Удалить аккаунт</div>
+		<div class="part_red" onclick="window.location='{% url "account:logout" %}';">Вийти</div>
 	</div>
 	
 	<div class="edit_avatar">
-		Выберите аватар:
+		Виберіть аватар:
 		<form method="POST" action=".">
 			{% csrf_token %}
 			<div class="images">
@@ -63,25 +57,7 @@
 		</div>
 		{% endfor %}
 		{% else %}
-		У вас нет избранных статей
-		{% endif %}
-	</div>
-	
-	<div class="articles">
-		{% if articles %}
-		{% for i in articles %}
-		<div class="part">
-			{{i.article_title}}
-			<div class="change">
-				<i class="fa-solid fa-pen" id="change" onclick="window.location='{% url "blog:edit_article" i.id %}';">Изменить</i>
-				<br>
-				<i class="fa-solid fa-trash" id="delete" onclick="window.location='{% url "blog:detail" i.id %}';">Удалить</i>
-			</div>
-			<hr>
-		</div>
-		{% endfor %}
-		{% else %}
-		У вас нет собственных статей
+		У вас немає обраних статей
 		{% endif %}
 	</div>
 </div>
