@@ -7,7 +7,6 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', include('home.urls')),
     path('blog/', include('blog.urls')),
-    path('about/', include('about.urls')),
     path('account/', include('account.urls')),
     path('', include('social_django.urls', namespace='social')),
     path('jarvis/', include('jarvis.urls')),
