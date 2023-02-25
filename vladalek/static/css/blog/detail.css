@@ -1,37 +1,23 @@
+.content {
+	padding: 0;
+	margin-top: 0;
+}
 .card {
 	position: relative;
 	width: 100%;
-	min-height: 200px;
+	padding-top: 3.375rem;
+	min-height: 100vh;
 	background: #fff;
-	margin-bottom: 20px;
 	overflow: hidden;
-}
-.card::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 24px;
-	background: linear-gradient(-135deg, #383838 12px, transparent 0%),  linear-gradient(135deg, #383838 12px, transparent 0%);
-	background-size: 24px;
-}
-.card::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 24px;
-	background: linear-gradient(-45deg, #383838 12px, transparent 0%),  linear-gradient(45deg, #383838 12px, transparent 0%);
-	background-size: 24px;
+	display: flex;
+	flex-direction: column;
 }
 .title {
 	position: relative;
 	top: 30px;
 	width: 75%;
 	padding: 0.5rem;
-	background: #af43f1;
+	background: #7D825B;
 	border-radius: 30px;
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
@@ -39,18 +25,21 @@
 .title p {
 	font-family: 'Pacifico', cursive;
 	font-size: 22px;
-	color: white;
+	color: #EDEFE2;
 }
 .bookmark {
 	position: absolute;
 	right: 0.5rem;
-	top: 2.3rem;
+	top: 5.675rem;
 }
 .bookmark button {
 	color: red;
 	font-size: 2.5rem;
 	background: none;
 	border: none;
+}
+.text_content {
+	margin-top: 1.5rem;
 }
 .text {
 	width: 100%;
@@ -71,6 +60,7 @@
 	margin-top: 3rem;
 	margin-left: auto;
 	margin-right: auto;
+	flex-grow: 1;
 	border-top: 3px dashed #000;
 	text-align: center;
 	background: #c0c0c0;
@@ -82,7 +72,7 @@
 	top: 10px;
 	font-family: 'Pacifico', cursive;
 	font-size: 33px;
-	color: #af43f1;
+	color: #7D825B;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;

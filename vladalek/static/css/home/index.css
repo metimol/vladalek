@@ -1,3 +1,15 @@
+body {
+	max-height: 100vh;
+	overflow: hidden;
+}
 .content {
-	padding: 0;
+	position: relative;
+}
+#text_greeting {
+	position: absolute;
+	top: 0;
+}
+#model-container {
+	position: absolute;
+	top: 10rem;
 }

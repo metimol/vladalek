@@ -3,15 +3,15 @@
 	padding: 0;
 }
 body {
-	background-color: #FFE53B;
-  background: linear-gradient(147deg, #FFE53B 0%, #fd3838 74%);
+	background-color: #7D825B;
+  background: linear-gradient(147deg, #DBEA8D 0%, #7D825B 74%);
 	font-family: 'Source Sans Pro', sans-serif;
 	min-height: 100vh;
 }
 header {
    height: 3.375rem;
    width: 100%;
-   background: #696969;
+   background: #7D825B;
    position: fixed;
    left: 0;
    top: 0;
@@ -25,7 +25,7 @@ header .logo {
 header a {
     font-family: 'ZCOOL KuaiLe', cursive;
     font-size: 1.75rem;
-    color:  white;
+    color:  #EDEFE2;
     text-decoration: none;
     cursor: pointer;
     outline: none;
@@ -38,7 +38,7 @@ header .menu {
 	height: 1.875rem;
 	width: 1.875rem;
 	padding: 0;
-	color: white;
+	color: #EDEFE2;
 	outline: none;
 	cursor: pointer;
 }
@@ -47,7 +47,7 @@ header .avatar {
 	right: 0.4375rem;
 	top: 0.625rem;
 	font-size: 1.75rem;
-	color: white;
+	color: #EDEFE2;
 	outline: none;
 	padding: 0;
 }
@@ -68,31 +68,24 @@ header .avatar i {
   text-align: left;
   top: 0;
   left: 0;
-  background-color: #696969;
+  background-color: #7D825B;
   overflow-x: hidden;
   padding-top: 3.75rem;
-  transition: 0.5s;
-}
-.sidenav a {
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  text-decoration: none;
-  font-size: 1.5625rem;
-  color: white;
-  display: block;
-  transition: 0.3s;
-  outline: none;
-}
-.sidenav a:hover {
-  color: #808080;
+  -webkit-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  transition: all 1s linear;
 }
 .sidenav i {
-  position: absolute;
-  top: 1rem;
-  right: 1.5625rem;
+  margin: 1rem;
   font-size: 2rem;
   outline: none;
-  color: white;
+  color: #EDEFE2;
   cursor: pointer;
+  transition: 0.3s;
+}
+.sidenav i:hover {
+  color: #DBEA8D;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 0.9375rem;}

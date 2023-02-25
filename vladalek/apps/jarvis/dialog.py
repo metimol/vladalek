@@ -8,7 +8,7 @@ def clean_str(r):
 	r = [c for c in r if c in alphabet]
 	return ''.join(r)
 
-alphabet = ' 1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;@'
+alphabet = " 1234567890-йцукенгшщзфівапролдячсмитьбюёхїжєqwertyuiopasdfghjklzxcvbnm?%.,()'!:;@"
 
 X_text = []
 y = []
