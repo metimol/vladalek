@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/blog/categories.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+  <div class="flex-inner">
+    <h2 class="p-title"><i class="fa-solid fa-feather-pointed"></i>Оберіть категорію:</h2>
+    <div class="menu-list">
+      <ul>
+      	{% for i in categories %}
+        <li onclick="window.location.href = '?category={{i.category}}'"><i class="{{ i.icon }}"></i>{{ i.category }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

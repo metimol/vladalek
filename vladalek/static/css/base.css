@@ -30,69 +30,48 @@ header a {
     cursor: pointer;
     outline: none;
 }
-header .menu {
-	position: absolute;
-	left: 0.4375rem;
-	top: 0.625rem;
-	font-size: 1.6rem;
-	height: 1.875rem;
-	width: 1.875rem;
-	padding: 0;
-	color: #EDEFE2;
-	outline: none;
-	cursor: pointer;
-}
-header .avatar {
-	position: absolute;
-	right: 0.4375rem;
-	top: 0.625rem;
-	font-size: 1.75rem;
-	color: #EDEFE2;
-	outline: none;
-	padding: 0;
-}
-header .avatar img {
-	width: 1.85rem;
-	height: 1.85rem;
-	cursor: pointer;
-}
-header .avatar i {
-	cursor: pointer;
-}
-.sidenav {
-  height: 100%;
-  float: left;
-  width: 0;
-  position: fixed;
-  z-index: 999;
-  text-align: left;
-  top: 0;
-  left: 0;
+.navbar {
+	position: fixed;
+	bottom: 0;
+	z-index: 999999;
+	width: 100vw;
   background-color: #7D825B;
-  overflow-x: hidden;
-  padding-top: 3.75rem;
-  -webkit-transition: all 1s linear;
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  transition: all 1s linear;
 }
-.sidenav i {
-  margin: 1rem;
-  font-size: 2rem;
-  outline: none;
+.navbar-list {
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  list-style: none;
+}
+.navbar-link {
+  display: inline-block;
+  padding: 0.8rem;
+  text-decoration: none;
   color: #EDEFE2;
-  cursor: pointer;
   transition: 0.3s;
+  border-radius: 0.4rem;
 }
-.sidenav i:hover {
-  color: #DBEA8D;
+.navbar-link:hover {
+  color: #483cff;
+  background-color: #EDEFE2;
 }
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 0.9375rem;}
-  .sidenav a {font-size: 1.125rem;}
+.navbar-link-icon {
+  font-size: 2.4rem;
+}
+.navbar-underscore {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: #483cff;
+  transition: 0.3s;
 }
 .content {
 	margin-top: 3.375rem;
 	width: 100%;
 	padding-top: 5vh;
+	margin-bottom: 5rem;
 }

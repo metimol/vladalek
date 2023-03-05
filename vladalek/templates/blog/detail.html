@@ -52,7 +52,7 @@
 			</div>
 			{% else %}
 			<div class="non_auth">
-				<a href="{% url 'account:login' %}"><span>Увійдіть</span></a>, щоб залишити коментар.
+				<a href="{% url 'account:login' %}">Увійдіть, щоб залишити коментар.</a>
 			</div>
 			{% endif %}
 			{% for i in coments_list %}
