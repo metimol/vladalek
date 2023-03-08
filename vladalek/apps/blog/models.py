@@ -18,7 +18,6 @@ class Articles(models.Model):
 	article_text = HTMLField(verbose_name='Текст статті')
 	article_about = models.CharField(max_length=100, verbose_name='Опис статті')
 	pub_date = models.DateField(auto_now_add=True)
-	fixed = models.BooleanField(default=False, verbose_name="Закріпити")
 	favorites = models.ManyToManyField(Profile, related_name="favourites", blank=True, verbose_name = "Обране")
 	def __str__(self):
 		return self.article_title

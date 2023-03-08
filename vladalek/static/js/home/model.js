@@ -19,7 +19,7 @@ let animFrame;
 let textIndex = 0;
 
 canvas.width = window.innerWidth;
-canvas.height = 30 * window.innerWidth/100
+canvas.height = 30 * window.innerWidth / 100
 
 class Vector3 {
   constructor(x, y, z) {
@@ -52,7 +52,8 @@ class Vector3 {
     const x = this.x * factor + canvas.width / 2;
     const y = this.y * factor + canvas.height / 2;
     return new Vector3(x, y, this.z);
-  }}
+  }
+}
 
 
 function init(e) {
@@ -134,29 +135,29 @@ function loop() {
   }
 
   particles.
-  sort((pa, pb) => pb.target.z - pa.target.z).
-  forEach((p, i) => {
-    if (p.interpolant < 1) {
-      p.interpolant = Math.min(p.interpolant + .01, 1);
+    sort((pa, pb) => pb.target.z - pa.target.z).
+    forEach((p, i) => {
+      if (p.interpolant < 1) {
+        p.interpolant = Math.min(p.interpolant + .01, 1);
 
-      p.position.x = lerp(p.interpolant, p.position.x, p.target.x);
-      p.position.y = lerp(p.interpolant, p.position.y, p.target.y);
-      p.position.z = lerp(p.interpolant, p.position.z, p.target.z);
-    }
-    const rotationX = Math.sin(Date.now() / 2000) * .8;
-    rotationY = lerp(0.00001, rotationY, targetRotationY);
-    const particle = p.position.
-    rotateX(rotationX).
-    rotateY(rotationY).
-    pp();
+        p.position.x = lerp(p.interpolant, p.position.x, p.target.x);
+        p.position.y = lerp(p.interpolant, p.position.y, p.target.y);
+        p.position.z = lerp(p.interpolant, p.position.z, p.target.z);
+      }
+      const rotationX = Math.sin(Date.now() / 2000) * .8;
+      rotationY = lerp(0.00001, rotationY, targetRotationY);
+      const particle = p.position.
+        rotateX(rotationX).
+        rotateY(rotationY).
+        pp();
 
-    const s = 1 - p.position.z / layers;
-    ctx.fillStyle = p.target.z === 0 ?
-    'rgb(114, 204, 255)' :
-    `rgba(242, 101, 49, ${s})`;
+      const s = 1 - p.position.z / layers;
+      ctx.fillStyle = p.target.z === 0 ?
+        'rgb(114, 204, 255)' :
+        `rgba(242, 101, 49, ${s})`;
 
-    ctx.fillRect(particle.x, particle.y, s * size, s * size);
-  });
+      ctx.fillRect(particle.x, particle.y, s * size, s * size);
+    });
 
   animFrame = requestAnimationFrame(loop);
 }
@@ -185,16 +186,27 @@ light.position.set(0, 2, 2);
 scene.add(light);
 const ambient_light = new THREE.AmbientLight(0xffffff, 3);
 scene.add(ambient_light);
-const renderer = new THREE.WebGLRenderer({alpha: true});
+const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setClearColor(0x000000, 0)
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("model-container").appendChild(renderer.domElement);
 
+const manager = new THREE.LoadingManager();
+manager.onLoad = function() {
+  var preloader = document.getElementById('preloader');
+  preloader.style.display = "none";
+}
+manager.onError = function(url) {
+  console.log("Error with loading model: " + url);
+  var preloader = document.getElementById('preloader');
+  preloader.style.display = "none";
+}
+
 const controls = new OrbitControls(camera, renderer.domElement);
-const loader = new GLTFLoader();
+const loader = new GLTFLoader(manager);
 loader.load(
   "/static/3d_models/robot_playground/scene.gltf",
-  function (gltf) {
+  function(gltf) {
     const mixer = new THREE.AnimationMixer(gltf.scene);
     gltf.animations.forEach((clip) => {
       mixer.clipAction(clip).play();
@@ -211,15 +223,19 @@ loader.load(
     animate();
   },
   undefined,
-  function (error) {
+  function(error) {
     console.error(error);
   }
 );
 
-window.addEventListener("resize", function () {
+window.addEventListener("resize", function() {
   const width = window.innerWidth;
   const height = window.innerHeight;
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
 });
+
+var preloader = document.getElementById('preloader');
+preloader.style.display = "none";
+

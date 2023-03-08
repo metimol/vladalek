@@ -21,6 +21,7 @@
   border-radius: 25px;
   height: 400px;
   transition: all 0.3s;
+  max-width: 80vw;
 }
 @media screen and (max-width: 992px) {
   .blog-slider {
@@ -33,6 +34,7 @@
     min-height: 500px;
     height: auto;
     margin: 180px auto;
+		padding: 8px;
   }
 }
 @media screen and (max-height: 500px) and (min-width: 992px) {
@@ -103,9 +105,9 @@
   transition-delay: 1.7s;
 }
 .blog-slider__img {
-  width: 300px;
+  width: 200px;
   flex-shrink: 0;
-  height: 300px;
+  height: 200px;
   background-image: linear-gradient(147deg, #7D825B 0%, #DBEA8D 74%);
   box-shadow: 4px 13px 30px 1px rgba(125, 130, 91, 0.2);
   border-radius: 20px;
@@ -197,10 +199,12 @@
   justify-content: center;
   text-align: center;
   letter-spacing: 1px;
+  max-width: 70vw;
+  overflow: hidden;
 }
 @media screen and (max-width: 576px) {
   .blog-slider__button {
-    width: 100%;
+    width: 60vw;
   }
 }
 .blog-slider .swiper-container-horizontal > .swiper-pagination-bullets, .blog-slider .swiper-pagination-custom, .blog-slider .swiper-pagination-fraction {

@@ -48,6 +48,8 @@
   transition-timing-function: ease-out;
   border-radius: 5px;
   font-size: 2rem;
+  max-width: 90vw;
+  overflow: hidden;
 }
 
 .menu-list ul:hover > .menu-list li:not(:hover) {
