@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{% static 'css/blog/detail.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 {% endblock %}
 
 {% block title %}{{a.article_title}}{% endblock %}
@@ -91,4 +93,8 @@
 		</div>
 	</div>
 
-{% endblock %}
+	{% endblock %}
+
+	{% block js %}
+	<script>hljs.highlightAll();</script>
+	{% endblock %}

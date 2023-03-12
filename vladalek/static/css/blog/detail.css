@@ -5,6 +5,7 @@
 .card {
 	position: relative;
 	width: 100%;
+	padding: 10px;
 	padding-top: 3.375rem;
 	min-height: 100vh;
 	background: #fff;
@@ -15,6 +16,7 @@
 .title {
 	position: relative;
 	top: 30px;
+	left: -10px;
 	width: 75%;
 	padding: 0.5rem;
 	background: #7D825B;
@@ -43,7 +45,7 @@
 }
 .text {
 	width: 100%;
-	padding: 10px;
+	padding-top: 10px;
 	padding-bottom: 25px;
 	font-size: 21px;
 }
