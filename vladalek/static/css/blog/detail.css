@@ -5,6 +5,7 @@
 .card {
 	position: relative;
 	width: 100%;
+	max-width: 100vw;
 	padding: 10px;
 	padding-top: 3.375rem;
 	min-height: 100vh;
@@ -48,6 +49,17 @@
 	padding-top: 10px;
 	padding-bottom: 25px;
 	font-size: 21px;
+}
+.text p {
+	margin-bottom: 1.5rem;
+}
+.text ol {
+	margin-left: 2rem;
+	margin-bottom: 1.5rem;
+}
+.text ul {
+	margin-left: 2rem;
+	margin-bottom: 1.5rem;
 }
 .date {
 	text-align: right;
