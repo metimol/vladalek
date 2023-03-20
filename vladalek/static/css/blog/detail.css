@@ -4,8 +4,7 @@
 }
 .card {
 	position: relative;
-	width: 100%;
-	max-width: 100vw;
+	width: calc(100vw - 20px);
 	padding: 10px;
 	padding-top: 3.375rem;
 	min-height: 100vh;
@@ -25,7 +24,7 @@
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 }
-.title p {
+.title h1 {
 	font-family: 'Pacifico', cursive;
 	font-size: 22px;
 	color: #EDEFE2;
@@ -59,6 +58,9 @@
 }
 .text ul {
 	margin-left: 2rem;
+	margin-bottom: 1.5rem;
+}
+.text pre {
 	margin-bottom: 1.5rem;
 }
 .date {

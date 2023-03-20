@@ -16,6 +16,7 @@
       <div class="blog-slider__img"> 
         <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp" alt="">
       </div>
+      <div class="blog-slider__pagination"></div>
       <div class="blog-slider__content">
         <span class="blog-slider__code">{{a.pub_date}}</span>
         <div class="blog-slider__title">{{a.article_title}}</div>
@@ -25,7 +26,6 @@
     </div>
     {% endfor %}
   </div>
-  <div class="blog-slider__pagination"></div>
 </div>
 {% else %}
 <div class="no">Статей немає :(</div>

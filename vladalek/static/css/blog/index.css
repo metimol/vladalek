@@ -155,7 +155,7 @@
 }
 @media screen and (max-width: 768px) {
   .blog-slider__content {
-    margin-top: -80px;
+    margin-top: -60px;
     text-align: center;
     padding: 0 30px;
   }
@@ -167,7 +167,7 @@
 }
 .blog-slider__content > * {
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(15px);
   transition: all 0.4s;
 }
 .blog-slider__code {
@@ -227,7 +227,7 @@
   .blog-slider__pagination {
     transform: translateX(-50%);
     left: 50% !important;
-    top: 205px;
+    top: 115px;
     width: 100% !important;
     display: flex;
     justify-content: center;
